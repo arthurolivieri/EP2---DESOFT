@@ -1,1 +1,1 @@
-print("yuri tabacof")
+print("yuri")
