@@ -1,6 +1,7 @@
 
 import random
 from math import *
+import funcoes
 
 tentativas=20
 
