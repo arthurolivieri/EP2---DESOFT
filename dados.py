@@ -3816,4 +3816,3 @@ DADOS = {
   }
 }
 
-paisesnorm = funcoes.normaliza(DADOS)
