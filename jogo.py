@@ -27,5 +27,5 @@ while vidas>0:
         vidas-=1
         term+=tentativa
         term+='\n'
-        term+= funcoes.haversine(6371,paises[tentativa]['geo']['latitude'],paises[resposta]['geo']['longitude'],paises[resposta]['geo']['latitude'],paises[tentativa]['geo']['longitude'])
+        term+= str(int(funcoes.haversine(6371,paises[tentativa]['geo']['latitude'],paises[resposta]['geo']['longitude'],paises[resposta]['geo']['latitude'],paises[tentativa]['geo']['longitude'])))
         print(term)
