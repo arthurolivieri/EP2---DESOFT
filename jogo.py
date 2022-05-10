@@ -26,6 +26,7 @@ while vidas>0:
     if tentativa != resposta:
         vidas-=1
         term+=tentativa
-        term+='\n'
+        term+=' --> Distância: '
         term+= str(int(funcoes.haversine(6371,paises[tentativa]['geo']['latitude'],paises[resposta]['geo']['longitude'],paises[resposta]['geo']['latitude'],paises[tentativa]['geo']['longitude'])))
+        term += 'km \n'
         print(term)
