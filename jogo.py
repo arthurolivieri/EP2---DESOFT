@@ -36,7 +36,8 @@ while jogarnovamente=='s':
                 print(paisesordenados[i][1],'km ->',paisesordenados[i][0])
         
         if tentativa == resposta:
-            print('*** Parabéns! Você acertou após 7 tentativas!\n\nJogar novamente? [s|n]')
+            print('\n*** Parabéns! Você acertou após', 21-vidas ,'tentativas!')
+            break
 
 
     if vidas<=0:
@@ -44,4 +45,6 @@ while jogarnovamente=='s':
         print('\n\nJogar novamente? [s|n]')
 
 
-    jogarnovamente=input('Jogar novamente? [s|n] ')
+    jogarnovamente=input('\nJogar novamente? [s|n] ')
+
+print('\n\n\nAté a próxima!')
