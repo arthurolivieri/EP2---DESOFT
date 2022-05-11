@@ -29,7 +29,7 @@ while jogarnovamente=='s':
 
         if tentativa != resposta:
             vidas-=1            
-            dist= (int(funcoes.haversine(6371,paises[tentativa]['geo']['latitude'],paises[resposta]['geo']['longitude'],paises[resposta]['geo']['latitude'],paises[tentativa]['geo']['longitude'])))
+            dist= (int(funcoes.haversine(6371,paises[tentativa]['geo']['latitude'],paises[tentativa]['geo']['longitude'],paises[resposta]['geo']['latitude'],paises[resposta]['geo']['longitude'])))
             paisesordenados = funcoes.adiciona_em_ordem(tentativa,dist,paisesordenados)
             print('\nDistâncias:\n')
             for i in range(len(paisesordenados)):
