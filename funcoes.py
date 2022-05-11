@@ -17,10 +17,23 @@ def adiciona_em_ordem(nome,dist,lista):
     saida=lista
     if not lista:
         saida.append([nome,dist])
-    for i in range (len(lista)):
-        if dist<lista[i][1]:
-            saida.insert(i,[nome,dist])
-            break
+        return saida
+
+    flag=True
+
+    for i in lista:
+        if dist<i[1]:
+            flag=False
+    
+    if flag==False:
+        for i in range (len(lista)):
+            if dist<lista[i][1]:
+                saida.insert(i,[nome,dist])
+                break
+    
+    elif flag == True:
+        saida.append([nome,dist])
+
     return saida
 
 
