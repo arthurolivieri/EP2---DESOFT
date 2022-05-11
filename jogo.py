@@ -27,7 +27,7 @@ while jogarnovamente=='s':
             print('\nVocê tem', vidas,'')
             tentativa=input('\nQual o seu palpite? ')
 
-        if tentativa != resposta:
+        if tentativa != resposta and funcoes.esta_na_lista(tentativa,paisesordenados)==False:
             vidas-=1            
             dist= (int(funcoes.haversine(6371,paises[tentativa]['geo']['latitude'],paises[tentativa]['geo']['longitude'],paises[resposta]['geo']['latitude'],paises[resposta]['geo']['longitude'])))
             paisesordenados = funcoes.adiciona_em_ordem(tentativa,dist,paisesordenados)

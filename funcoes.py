@@ -79,9 +79,9 @@ def sorteia_letra(palavra,restrito):
         return caracter
 
 def haversine(r,p1,l1,p2,l2):
-    p=(p2-p1)/2
-    l=(l2-l1)/2
-    c1=sin(p)**2+(cos(p1)*cos(p2)*sin(l)**2)
+    p=(radians(p2)-radians(p1))/2
+    l=(radians(l2)-radians(l1))/2
+    c1=sin(p)**2+(cos(radians(p1))*cos(radians(p2))*sin(l)**2)
     c2=c1**(1/2)
     d=2*r*asin(c2)
     return d
