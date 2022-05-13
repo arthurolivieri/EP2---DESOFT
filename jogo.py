@@ -25,16 +25,9 @@ while jogarnovamente=='s':
 
     resposta=funcoes.sorteia_pais(paises)
     print('Um pais foi escolhido, tente adivinhar!\n')
-    cores=[]
-
-    #adiciona as cores em uma lista
-    for chave,valor in paises[resposta]['bandeira'].items():
-        if valor>0 :
-            cores.append(chave)
-    if 'outras' in cores:
-        cores.remove('outras')
+    cores_exibidas=[]
     
-    restrito=[] #cria uma lista de palavras restritas para a dica da capital
+    restrito=[] #cria uma lista de letras restritas para a dica da capital
 
     vidas=20 #variavel que conta a quantidade de vidas/tentativas restantes
 
@@ -52,11 +45,10 @@ while jogarnovamente=='s':
             tentativa='dica'
         
         else:
-            if dicasdadas:
-                for i in range(len(dicasdadas)):
-                    print (dicasdadas[i][0],dicasdadas[i][1])
-            print('\nVocê tem', vidas,'tentativas' )
-            tentativa=input( '\nQual o seu palpite? ')
+            for i in range(len(dicasdadas)):
+                print (dicasdadas[i][0],dicasdadas[i][1])
+        print('\nVocê tem', vidas,'tentativas' )
+        tentativa=input( '\nQual o seu palpite? ')
 
         while tentativa not in paises.keys() and tentativa != 'desisto' and tentativa != 'dica':
             print('pais desconhecido')
@@ -98,9 +90,9 @@ while jogarnovamente=='s':
                 print('Opção inválida')
                 continue
             elif int(dica) == 1:
-                cordica=cores[random.randint(0,len(cores)-1)]
+                cordica=funcoes.sorteia_cores(resposta, cores_exibidas)
                 dicasdadas.append(['  - Cor da bandeira: ', cordica])
-                cores.remove(cordica)
+                cores_exibidas.append(cordica)
                 vidas -= 4
             elif int(dica) == 2:
                 letradica=funcoes.sorteia_letra(paises[resposta]['capital'],restrito)

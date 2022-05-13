@@ -1,5 +1,6 @@
 import random
 from math import *
+import dados
 
 def normaliza(dic):
     dicnorm = {}
@@ -8,6 +9,8 @@ def normaliza(dic):
             dicnorm[pais] = dicinfos
             dicnorm[pais]["continente"] = continente
     return dicnorm
+
+paises=normaliza(dados.DADOS)
 
 def sorteia_pais(dic):
     pais = random.choice(list(dic))
@@ -85,3 +88,11 @@ def haversine(r,p1,l1,p2,l2):
     c2=c1**(1/2)
     d=2*r*asin(c2)
     return d
+
+def sorteia_cores(pais, cores_sorteadas):
+    cores = []
+    for cor in paises[pais]['bandeira']:
+        if cor not in cores_sorteadas:
+            cores.append(cor)
+    sorteada = random.choice(cores)
+    return sorteada
