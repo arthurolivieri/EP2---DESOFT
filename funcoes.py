@@ -89,10 +89,10 @@ def haversine(r,p1,l1,p2,l2):
     d=2*r*asin(c2)
     return d
 
-def sorteia_cores(pais, cores_sorteadas):
+def sorteia_cores(pais):
     cores = []
-    for cor in paises[pais]['bandeira']:
-        if cor not in cores_sorteadas:
+    for cor, numero in paises[pais]['bandeira'].items():
+        if numero > 0 and cor != 'outras':
             cores.append(cor)
     sorteada = random.choice(cores)
-    return sorteada
+    return cores
