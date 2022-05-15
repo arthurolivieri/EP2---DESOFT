@@ -4,26 +4,26 @@ import funcoes
 import dados
 
 
-print('\n ============================ \n|                            |\n| Bem-vindo ao Insper Países |\n|                            |\n ==== Design de Software ==== \nComandos:\ndica       - entra no mercado de dicas\ndesisto    - desiste da rodada\ninventario - exibe sua posição')
+print('\n ============================ \n|                            |\n| Bem-vindo ao Insper Países |\n|                            |\n ==== Design de Software ==== \n\nComandos:\n    dica       - entra no mercado de dicas\n    desisto    - desiste da rodada\n    inventario - exibe sua posição')
 
 paises=funcoes.normaliza(dados.DADOS)
 
-mercadodedicas=['Mercado de Dicas\n',
-'----------------------------------------\n',
-'1. Cor da bandeira  - custa 4 tentativas\n',
-'2. Letra da capital - custa 3 tentativas\n',
-'3. Área             - custa 6 tentativas\n',
-'4. População        - custa 5 tentativas\n',
-'5. Continente       - custa 7 tentativas\n',
-'0. Sem dica\n',
-'----------------------------------------\n']
+mercadodedicas=['\nMercado de Dicas',
+'----------------------------------------',
+'1. Cor da bandeira  - custa 4 tentativas',
+'2. Letra da capital - custa 3 tentativas',
+'3. Área             - custa 6 tentativas',
+'4. População        - custa 5 tentativas',
+'5. Continente       - custa 7 tentativas',
+'0. Sem dica',
+'----------------------------------------']
 
 jogarnovamente='s'
 
 while jogarnovamente=='s':
 
     resposta=funcoes.sorteia_pais(paises)
-    print('Um pais foi escolhido, tente adivinhar!\n')
+    print('\nUm pais foi escolhido, tente adivinhar!')
     
     cores_exibidas=[]
     restrito=[] #cria uma lista de letras restritas para a dica da capital
@@ -67,12 +67,14 @@ while jogarnovamente=='s':
                     print (i[x],end='')
 
         if a != 1:
-            if vidas >10:
-                print('\nVocê tem\033[0;36m', vidas,'\033[00mtentativas' )
+            if vidas == 20:
+                print('Você tem\033[0;36m', vidas,'\033[00mtentativa(s)' )
+            elif 20 > vidas > 10:
+                print('\nVocê tem\033[0;36m', vidas,'\033[00mtentativa(s)' )
             elif vidas>5:
-                print('\nVocê tem\033[0;33m', vidas,'\033[00mtentativas' )
+                print('\nVocê tem\033[0;33m', vidas,'\033[00mtentativa(s)' )
             else:
-                print('\nVocê tem\033[0;31m', vidas,'\033[00mtentativas' )
+                print('\nVocê tem\033[0;31m', vidas,'\033[00mtentativa(s)' )
         tentativa=input( '\nQual o seu palpite? ')
 
         #caso de um país desconhecido
@@ -80,7 +82,7 @@ while jogarnovamente=='s':
             print('pais desconhecido')
             tentativa=input('\nQual o seu palpite? ')
 
-        #caso erre e não temha tentado esse país antes
+        #caso erre e não tenha tentado esse país antes
         if tentativa != resposta and funcoes.esta_na_lista(tentativa,paisesordenados)==False and tentativa != 'desisto' and tentativa != 'dica' and tentativa != 'inventario':
             vidas-=1            
             dist= (int(funcoes.haversine(6371,paises[tentativa]['geo']['latitude'],paises[tentativa]['geo']['longitude'],paises[resposta]['geo']['latitude'],paises[resposta]['geo']['longitude'])))
@@ -108,27 +110,27 @@ while jogarnovamente=='s':
             a = 1
 
             opcoes=['0']
-            mercadodedicas=['Mercado de Dicas\n',
-            '----------------------------------------\n']
+            mercadodedicas=['\nMercado de Dicas',
+            '----------------------------------------']
 
             if vidas>4:
                 opcoes.append('1')
-                mercadodedicas.append('1. Cor da bandeira  - custa 4 tentativas\n')
+                mercadodedicas.append('1. Cor da bandeira  - custa 4 tentativas')
             if vidas>3:
                 opcoes.append('2')
-                mercadodedicas.append('2. Letra da capital - custa 3 tentativas\n')
+                mercadodedicas.append('2. Letra da capital - custa 3 tentativas')
             if vidas>6 and dica3==True:
                 opcoes.append('3')
-                mercadodedicas.append('3. Área             - custa 6 tentativas\n')
+                mercadodedicas.append('3. Área             - custa 6 tentativas')
             if vidas>5 and dica4==True:
                 opcoes.append('4')
-                mercadodedicas.append('4. População        - custa 5 tentativas\n')
+                mercadodedicas.append('4. População        - custa 5 tentativas')
             if vidas>7 and dica5==True:
                 opcoes.append('5')
-                mercadodedicas.append('5. Continente       - custa 7 tentativas\n')
+                mercadodedicas.append('5. Continente       - custa 7 tentativas')
 
-            mercadodedicas.append('0. Sem dica\n')
-            mercadodedicas.append('----------------------------------------\n')
+            mercadodedicas.append('0. Sem dica')
+            mercadodedicas.append('----------------------------------------')
 
             escolhasuaopcao='Escolha sua opção ['
             for i in opcoes:
@@ -186,15 +188,15 @@ while jogarnovamente=='s':
                 dicasdadas.append(['  - Área: ', paises[resposta]['area']])
                 vidas -= 6
                 dica3=False
-                mercadodedicas.pop(mercadodedicas.index('3. Área             - custa 6 tentativas\n'))
+                mercadodedicas.pop(mercadodedicas.index('3. Área             - custa 6 tentativas'))
             elif int(dica) == 4:
                 dicasdadas.append(['  - População: ', paises[resposta]['populacao'], ' pessoas'])
                 vidas -= 5
                 dica4=False
-                mercadodedicas.pop(mercadodedicas.index('4. População        - custa 5 tentativas\n'))
+                mercadodedicas.pop(mercadodedicas.index('4. População        - custa 5 tentativas'))
             elif int(dica) == 5:
                 dicasdadas.append(['  - Continente: ', paises[resposta]['continente']])
-                mercadodedicas.pop(mercadodedicas.index('5. Continente       - custa 7 tentativas\n'))
+                mercadodedicas.pop(mercadodedicas.index('5. Continente       - custa 7 tentativas'))
                 vidas -= 7
                 dica5=False
             elif int(dica) == 0:
