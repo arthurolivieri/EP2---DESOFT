@@ -85,6 +85,9 @@ while jogarnovamente=='s':
                 print('>>> Que deselegante desistir, o país era:', resposta)
                 jogarnovamente=input('\nJogar novamente? [s|n] ')
                 break
+        
+        if tentativa == 'inventario':
+            continue
 
         #se pedir dica
         if tentativa == 'dica':
