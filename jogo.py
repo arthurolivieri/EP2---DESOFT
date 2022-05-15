@@ -50,7 +50,16 @@ while jogarnovamente=='s':
         if vidas != 20:
             print('\nDistâncias:')
             for i in range(len(paisesordenados)):
-                print('    ', paisesordenados[i][1],'km ->',paisesordenados[i][0])
+                if int(paisesordenados[i][1])>10000:
+                    print('\033[1;30m    ', paisesordenados[i][1],'km ->',paisesordenados[i][0],'\033[00m')
+                elif int(paisesordenados[i][1])>5000:
+                    print('\033[0;35m    ', paisesordenados[i][1],'km ->',paisesordenados[i][0],'\033[00m')
+                elif int(paisesordenados[i][1])>2000:
+                    print('\033[0;31m    ', paisesordenados[i][1],'km ->',paisesordenados[i][0],'\033[00m')
+                elif int(paisesordenados[i][1])>1000:
+                    print('\033[0;33m    ', paisesordenados[i][1],'km ->',paisesordenados[i][0],'\033[00m')
+                else:
+                    print('\033[1;34m    ', paisesordenados[i][1],'km ->',paisesordenados[i][0],'\033[00m')
             print('\nDicas:')
             for i in dicasdadas:
                 print('')
@@ -58,7 +67,12 @@ while jogarnovamente=='s':
                     print (i[x],end='')
 
         if a != 1:
-            print('\nVocê tem', vidas,'tentativas' )
+            if vidas >10:
+                print('\nVocê tem\033[0;36m', vidas,'\033[00mtentativas' )
+            elif vidas>5:
+                print('\nVocê tem\033[0;33m', vidas,'\033[00mtentativas' )
+            else:
+                print('\nVocê tem\033[0;31m', vidas,'\033[00mtentativas' )
         tentativa=input( '\nQual o seu palpite? ')
 
         #caso de um país desconhecido
